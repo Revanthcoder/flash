@@ -14,7 +14,45 @@ MEDIANFLOW is an interactive score-stream dashboard that calculates the exact ru
 
 The project is a local-first hackathon application. Its session data is held in memory and is cleared when the API process restarts; it is not a persistent or multi-user service.
 
-**Quick links:** [Quickstart](#4-quickstart) · [API reference](#7-api-reference) · [Verification](#4-quickstart-verify)
+**Quick links:** [Quickstart](#4-quickstart) · [API reference](#7-api-reference) · [Verification](#verify)
+
+---
+
+## At a glance
+
+| | |
+| --- | --- |
+| **Purpose** | Explore exact running-median calculations over a live score stream |
+| **Core loop** | Add or replay scores → balance two heaps → inspect the median and analytics |
+| **Algorithm** | Max-heap for the lower half and min-heap for the upper half |
+| **Dashboard** | React, Vite, charts, heap visualization, CSV replay, and performance lab |
+| **Local API** | FastAPI service; session data is held in memory |
+| **Data mode** | Local demonstration; no account, database, or external API key required |
+
+## Contents
+
+1. [Five-minute showcase](#five-minute-showcase)
+2. [System architecture](#1-system-architecture)
+3. [Features](#2-features)
+4. [Algorithm and engineering principles](#3-algorithm--engineering-principles)
+5. [Quickstart](#4-quickstart)
+6. [Deploy](#5-deploy)
+7. [A typical session](#6-a-typical-session)
+8. [API reference](#7-api-reference)
+9. [Data and limitations](#8-data--limitations)
+10. [Project layout](#9-project-layout)
+11. [Technology](#10-technology)
+
+## Five-minute showcase
+
+Use this path to explore the main workflow:
+
+1. **Open the dashboard.** Review the current median, stream metrics, and recent scores.
+2. **Add values.** Enter signed integers manually or start the automatic stream.
+3. **Watch the median update.** Observe the two heap sizes stay balanced as scores arrive.
+4. **Inspect the structure.** Open the heap visualizer and explore analytics.
+5. **Replay a CSV.** Upload a score history and select a replay pace.
+6. **Run a benchmark.** Generate a stream and compare its median with a sorted reference.
 
 ---
 
