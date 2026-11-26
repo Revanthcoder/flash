@@ -25,6 +25,19 @@ def test_score_endpoint_rejects_non_integer_and_out_of_range_values() -> None:
     assert client.post("/api/scores", json={"value": 2**31}).status_code == 422
 
 
+def test_local_frontend_cors_preflight_is_allowed() -> None:
+    response = client.options(
+        "/api/scores",
+        headers={
+            "Origin": "http://localhost:5173",
+            "Access-Control-Request-Method": "POST",
+            "Access-Control-Request-Headers": "content-type",
+        },
+    )
+    assert response.status_code == 200
+    assert response.headers["access-control-allow-origin"] == "http://localhost:5173"
+
+
 def test_csv_upload_validates_before_adding_and_accepts_header() -> None:
     response = client.post(
         "/api/csv",

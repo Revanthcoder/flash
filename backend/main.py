@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import io
+import os
 import random
 import time
 from threading import RLock
@@ -13,9 +14,17 @@ from pydantic import BaseModel, Field
 from backend.median import MedianStream
 
 app = FastAPI(title="MEDIANFLOW API", version="1.0.0")
+cors_origins = [
+    origin.strip().rstrip("/")
+    for origin in os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:5173,http://127.0.0.1:5173",
+    ).split(",")
+    if origin.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

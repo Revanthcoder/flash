@@ -11,7 +11,7 @@ import {
   ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API = (import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "http://localhost:8000" : "")).replace(/\/+$/, "");
 const navItems = [
   { id: "overview", label: "Overview", icon: BarChart3, group: "Workspace" },
   { id: "scoreboard", label: "Live scoreboard", icon: Radio, group: "Workspace" },
@@ -29,7 +29,15 @@ const emptyState = {
 };
 
 async function request(path, options = {}) {
-  const response = await fetch(`${API}${path}`, options);
+  if (!API) {
+    throw new Error("The API URL is not configured for this deployment. Set VITE_API_URL to your deployed backend URL, then redeploy the frontend.");
+  }
+  let response;
+  try {
+    response = await fetch(`${API}${path}`, options);
+  } catch {
+    throw new Error(`Could not reach the MEDIANFLOW API at ${API}. Confirm the backend is deployed and CORS_ORIGINS includes this site's exact origin.`);
+  }
   if (!response.ok) {
     let message = `Request failed (${response.status})`;
     try {

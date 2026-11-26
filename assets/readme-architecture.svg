@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title description">
+  <title id="title">MEDIANFLOW architecture</title>
+  <desc id="description">Scores flow from the React dashboard to a FastAPI service, then into balanced max-heaps and min-heaps that provide the live median.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101a2d"/>
+      <stop offset="1" stop-color="#080d1a"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aa8cff"/>
+      <stop offset="1" stop-color="#7547db"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="420" rx="22" fill="url(#background)"/>
+  <path d="M32 80H1168M32 368H1168" stroke="#253249"/>
+  <text x="54" y="52" fill="#8da0ba" font-family="Inter,Segoe UI,sans-serif" font-size="12" font-weight="700" letter-spacing="2.2">REAL-TIME SCORE INTELLIGENCE · TWO-HEAP ARCHITECTURE</text>
+
+  <g transform="translate(52 136)">
+    <rect width="230" height="174" rx="15" fill="#111d31" stroke="#2b3a51"/>
+    <rect x="18" y="19" width="32" height="32" rx="9" fill="#143c4b"/>
+    <path d="M25 36h5l4-9 5 17 4-8h4" fill="none" stroke="#52d9ea" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="62" y="34" fill="#eaf2fc" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="700">React dashboard</text>
+    <text x="20" y="79" fill="#8798b0" font-family="Inter,Segoe UI,sans-serif" font-size="11">Live scoreboard · charts</text>
+    <text x="20" y="100" fill="#8798b0" font-family="Inter,Segoe UI,sans-serif" font-size="11">CSV replay · performance lab</text>
+    <rect x="20" y="126" width="87" height="25" rx="6" fill="#123545" stroke="#246278"/>
+    <text x="63.5" y="143" text-anchor="middle" fill="#8ee8f2" font-family="Inter,Segoe UI,sans-serif" font-size="10" font-weight="600">ADD SCORE</text>
+  </g>
+
+  <path d="M295 222h71" stroke="#42ccdf" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+  <text x="329" y="205" text-anchor="middle" fill="#768ba5" font-family="Inter,Segoe UI,sans-serif" font-size="9">JSON API</text>
+
+  <g transform="translate(380 136)">
+    <rect width="190" height="174" rx="15" fill="#111d31" stroke="#2b3a51"/>
+    <text x="20" y="35" fill="#eaf2fc" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="700">FastAPI engine</text>
+    <text x="20" y="61" fill="#8798b0" font-family="Inter,Segoe UI,sans-serif" font-size="10">Validate · insert · rebalance</text>
+    <rect x="20" y="82" width="150" height="1" fill="#2b3a51"/>
+    <text x="20" y="108" fill="#6fdce9" font-family="ui-monospace,Consolas,monospace" font-size="11">heapq.heappush()</text>
+    <text x="20" y="132" fill="#a891f4" font-family="ui-monospace,Consolas,monospace" font-size="11">heapq.heappop()</text>
+    <text x="20" y="156" fill="#7d8ea5" font-family="Inter,Segoe UI,sans-serif" font-size="9">In-memory session · Python</text>
+  </g>
+
+  <path d="M582 222h75" stroke="#42ccdf" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+  <text x="619" y="205" text-anchor="middle" fill="#768ba5" font-family="Inter,Segoe UI,sans-serif" font-size="9">O(log n)</text>
+
+  <g transform="translate(672 136)">
+    <rect width="190" height="174" rx="15" fill="#101c2c" stroke="#246078"/>
+    <text x="20" y="35" fill="#76e3f0" font-family="Inter,Segoe UI,sans-serif" font-size="12" font-weight="700">MAX-HEAP</text>
+    <text x="20" y="57" fill="#9aabc0" font-family="Inter,Segoe UI,sans-serif" font-size="10">Lower half · values ≤ median</text>
+    <g fill="#123b4a" stroke="#28748a">
+      <circle cx="95" cy="94" r="19"/><circle cx="62" cy="139" r="15"/><circle cx="128" cy="139" r="15"/>
+    </g>
+    <path d="M85 110 69 126m36-16 16 16" stroke="#44c9da" stroke-width="1.5"/>
+    <text x="95" y="98" text-anchor="middle" fill="#c6f4f8" font-family="ui-monospace,Consolas,monospace" font-size="11">root</text>
+    <text x="62" y="143" text-anchor="middle" fill="#88dfe9" font-family="ui-monospace,Consolas,monospace" font-size="9">max</text>
+    <text x="128" y="143" text-anchor="middle" fill="#88dfe9" font-family="ui-monospace,Consolas,monospace" font-size="9">…</text>
+  </g>
+
+  <g transform="translate(892 136)">
+    <rect width="190" height="174" rx="15" fill="#17132b" stroke="#57458c"/>
+    <text x="20" y="35" fill="#c2abff" font-family="Inter,Segoe UI,sans-serif" font-size="12" font-weight="700">MIN-HEAP</text>
+    <text x="20" y="57" fill="#9aabc0" font-family="Inter,Segoe UI,sans-serif" font-size="10">Upper half · values ≥ median</text>
+    <g fill="#2a2148" stroke="#7155b0">
+      <circle cx="95" cy="94" r="19"/><circle cx="62" cy="139" r="15"/><circle cx="128" cy="139" r="15"/>
+    </g>
+    <path d="M85 110 69 126m36-16 16 16" stroke="#9e7cec" stroke-width="1.5"/>
+    <text x="95" y="98" text-anchor="middle" fill="#e3d9ff" font-family="ui-monospace,Consolas,monospace" font-size="11">root</text>
+    <text x="62" y="143" text-anchor="middle" fill="#c7b5ff" font-family="ui-monospace,Consolas,monospace" font-size="9">min</text>
+    <text x="128" y="143" text-anchor="middle" fill="#c7b5ff" font-family="ui-monospace,Consolas,monospace" font-size="9">…</text>
+  </g>
+
+  <path d="M862 222h22" stroke="#a98bf9" stroke-width="2" marker-end="url(#arrow-violet)"/>
+  <rect x="1092" y="170" width="82" height="105" rx="13" fill="#12212e" stroke="#2a5665"/>
+  <text x="1133" y="198" text-anchor="middle" fill="#82dfe9" font-family="Inter,Segoe UI,sans-serif" font-size="9" font-weight="700" letter-spacing="1">MEDIAN</text>
+  <text x="1133" y="238" text-anchor="middle" fill="#f3f8ff" font-family="Inter,Segoe UI,sans-serif" font-size="26" font-weight="700">½</text>
+  <text x="1133" y="258" text-anchor="middle" fill="#8294aa" font-family="Inter,Segoe UI,sans-serif" font-size="8">O(1) lookup</text>
+  <circle cx="1128" cy="327" r="3" fill="#22d3ee" filter="url(#glow)"/>
+  <text x="1140" y="331" fill="#71839a" font-family="Inter,Segoe UI,sans-serif" font-size="9">Exact · no approximation</text>
+  <defs>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#42ccdf"/></marker>
+    <marker id="arrow-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#a98bf9"/></marker>
+  </defs>
+  <text x="54" y="395" fill="#65788f" font-family="Inter,Segoe UI,sans-serif" font-size="9" letter-spacing="1.2">NUMBERS MOVE. WE KEEP UP.</text>
+</svg>
